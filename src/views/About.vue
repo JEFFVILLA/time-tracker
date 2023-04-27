@@ -1,11 +1,11 @@
 <template>
-    <div class="text-black flex justify-center w-full h-full items-center p-4">
-        <h2>Home Component</h2>
+    <div>
+        <h1>About</h1>
     </div>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
 export default defineComponent({
-    name: 'HomeApp',
+    name: 'AboutApp',
 });
 </script>

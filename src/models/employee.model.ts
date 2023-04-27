@@ -1,0 +1,43 @@
+import type { Company } from "./company.model";
+
+export interface Employee {
+    id:                              string;
+    firstName:                       string;
+    lastName:                        string;
+    email:                           string;
+    workStatus:                      string;
+    imageProfileURL:                 string;
+    code:                            number;
+    pin:                             number;
+    phone:                           number;
+    company:                         Company;
+    gender:                          string;
+    contractId:                      number;
+    nid:                             string;
+    identityNumberType:              string;
+    ssn:                             string;
+    pricePerHour:                    number;
+    accountNumber:                   number;
+    dateOfBirth:                     Date;
+    customFields:                    any[];
+    createdAt:                       Date;
+    updatedAt:                       Date;
+    status:                          string;
+    children:                        number;
+    disability:                      string;
+    address:                         string;
+    postalCode:                      number;
+    city:                            string;
+    province:                        string;
+    country:                         string;
+    nationality:                     string;
+    personalMail:                    string;
+    maritalStatus:                   string;
+    emergencyPhone:                  number;
+    description:                     string;
+    salaryRange:                     string;
+    studyLevel:                      string;
+    professionalCategoryCode:        string;
+    professionalCategoryDescription: string;
+    bic:                             string;
+}

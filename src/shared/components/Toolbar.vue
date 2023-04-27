@@ -1,14 +1,14 @@
 <template>
-    <div class="mx-auto  px-4 py-8 sm:px-6 lg:px-8">
+    <div class="mx-auto  px-4 py-2 sm:px-6 lg:px-8">
     <div class="flex items-center sm:justify-between sm:gap-4">
       <div class="relative hidden sm:block">
             <span class="text-xl">DashBoard</span>
       </div>
 
       <div
-        class="flex flex-1 items-center justify-between gap-8 sm:justify-end"
+        class="flex flex-1 items-center justify-between sm:justify-end"
       >
-        <div class="group gap-3 flex shrink-0 items-center rounded-full transition p-4 bg-slate-200">
+        <div class="group gap-3 flex shrink-0 items-center rounded-full transition p-4 bg-emerald-200">
           <span>{{ formatWorkTime }}</span>
           <ButtonApp v-if="employeeWorkStatus === 'offline'" @click="clockIn()" class="bg-emerald-500">Entrar</ButtonApp>
           <ButtonApp v-if="employeeWorkStatus === 'pause' || employeeWorkStatus === 'online'" class="bg-gray-400">Pausar</ButtonApp>
@@ -51,7 +51,8 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref, watch } from 'vue';
 import { WorkEntriesService } from '../../services/work-entries-endpoint';
-import type { WorkEntries, Employee } from '../../models/work-entries.model';
+import type { WorkEntries } from '../../models/work-entries.model';
+import type { Employee } from '../../models/employee.model';
 import ButtonApp from '@/shared/components/Button.vue';
 import { workTimeHelper } from '../utils/helpers';
 export default defineComponent({
