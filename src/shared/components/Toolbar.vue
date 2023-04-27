@@ -9,10 +9,10 @@
         class="flex flex-1 items-center justify-between gap-8 sm:justify-end"
       >
         <div class="group gap-3 flex shrink-0 items-center rounded-full transition p-4 bg-slate-200">
-          <span>{{ workHours }}</span>
-          <ButtonApp v-if="employeeWorkStatus === 'offline'" class="bg-emerald-500">Entrar</ButtonApp>
+          <span>{{ formatWorkTime }}</span>
+          <ButtonApp v-if="employeeWorkStatus === 'offline'" @click="clockIn()" class="bg-emerald-500">Entrar</ButtonApp>
           <ButtonApp v-if="employeeWorkStatus === 'pause' || employeeWorkStatus === 'online'" class="bg-gray-400">Pausar</ButtonApp>
-          <ButtonApp v-if="employeeWorkStatus === 'online'" class="bg-red-400">Salir</ButtonApp>
+          <ButtonApp v-if="employeeWorkStatus === 'online'" class="bg-red-400" @click="clockOut()" >Salir</ButtonApp>
           <span
             aria-hidden="true"
             class="block h-8 w-px rounded-full bg-gray-500"
@@ -53,6 +53,7 @@ import { defineComponent, onMounted, ref, watch } from 'vue';
 import { WorkEntriesService } from '../../services/work-entries-endpoint';
 import type { WorkEntries, Employee } from '../../models/work-entries.model';
 import ButtonApp from '@/shared/components/Button.vue';
+import { workTimeHelper } from '../utils/helpers';
 export default defineComponent({
     name: 'ToolbarApp',
     components: {
@@ -61,42 +62,101 @@ export default defineComponent({
 
 
     setup() {
-        const workEntries =  ref<WorkEntries[]>([]) ;
+        const workEntries =  ref<any>({}) ;
         const employeeFullName = ref<string>(''); 
         const employeeWorkStatus = ref<string>('');
-        const workHours = ref<number>(500);
+        const formatWorkTime = ref("00:00:00");
+        const workTime = ref<number>(0);
+        const counter = ref<any>(null);
         const getWorkEntries = async () => {
             try {
                 const response = await WorkEntriesService.getWorkEntries();
+                workEntries.value = response[0];
+                getEmployeeName(workEntries.value.employee);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        const clockIn = async () => {
+            try {
+                const clockInstance: any = {
+                    "employeeId": "b99a6cd9-3a3d-4635-9eea-e089c90ac45a",
+                    "workEntryIn": {
+                        "coordinates" : {
+                            "latitude": 39.474257,
+                            "longitude": -0.357216
+                        }
+                    }
+                }
+                const response = await WorkEntriesService.postWorkEntriesClockIn(clockInstance);
                 workEntries.value = response;
-                getEmployeeName(workEntries.value[0].employee);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        const clockOut = async () => {
+            try {
+                const clockInstance: any = {
+                    "employeeId": "b99a6cd9-3a3d-4635-9eea-e089c90ac45a",
+                    "workEntryOut": {
+                        "coordinates" : {
+                            "latitude": 39.474257,
+                            "longitude": -0.357216
+                        }
+                    }
+                }
+                const response = await WorkEntriesService.postWorkEntriesClockOut(clockInstance);
+                workEntries.value = response;
+                console.log(workEntries.value);
             } catch (error) {
                 console.log(error);
             }
         };
         
-        const getEmployeeName = async (employee: Employee) => {
+        const getEmployeeName = (employee: Employee) => {
             employeeFullName.value = `${employee.firstName} ${employee.lastName}`;
         };
 
+        const initCountWorkTime = (employee: Employee) => {
+          if (employee.workStatus === 'offline') {
+            clearInterval(counter.value);
+          }
+          if(employee.workStatus === 'online' || employee.workStatus === 'pause') {
+            counter.value = setInterval(() => {
+                workTime.value += 1;
+                formatWorkTime.value = workTimeHelper(workTime.value);
+            }, 1000)
+          }
+        };
 
-        const getWorkStatusEmployee = async (employee: Employee) => {
+
+        const getWorkStatusEmployee = (employee: Employee) => {
             employeeWorkStatus.value = employee.workStatus;
         };
+        const calculatedWorkTime = (seconds: number) => {
+          workTime.value = seconds;
+          formatWorkTime.value = workTimeHelper(seconds);
+        }
 
         onMounted(() => {
             getWorkEntries();
         });
 
         watch(workEntries, () => {
-            getWorkStatusEmployee(workEntries.value[0].employee);
+            getWorkStatusEmployee(workEntries.value.employee);
+            calculatedWorkTime(workEntries.value.workedSeconds);
+            initCountWorkTime(workEntries.value.employee);
         });
+
 
         return {
             workEntries,
             employeeFullName,
             employeeWorkStatus,
-            workHours
+            formatWorkTime,
+            clockIn,
+            clockOut
         };
     },
 });

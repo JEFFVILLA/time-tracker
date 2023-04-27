@@ -12,14 +12,14 @@ class WorkEntriesAxios {
             return workEntries;
     };
 
-    public postWorkEntriesClockIn = async (clockIn: WorkEntriesIn): Promise<WorkEntries[]> => {
+    public postWorkEntriesClockIn = async (clockIn: WorkEntriesIn): Promise<WorkEntries> => {
             const { data } = await sesameApiService.post("/clock-in", clockIn);
-            return data;
+            return data.data;
     };
 
-    public postWorkEntriesClockOut = async (clockOut: WorkEntriesOut): Promise<WorkEntries[]> => {
+    public postWorkEntriesClockOut = async (clockOut: WorkEntriesOut): Promise<WorkEntries> => {
             const { data } = await sesameApiService.post("/clock-out", clockOut);
-            return data;
+            return data.data;
     };
 
 

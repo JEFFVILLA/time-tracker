@@ -69,8 +69,8 @@ export interface WorkEntry {
 }
 
 export interface Coordinates {
-    latitude:  null;
-    longitude: null;
+    latitude:  number;
+    longitude: number;
 
 }
 
