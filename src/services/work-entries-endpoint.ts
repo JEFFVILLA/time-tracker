@@ -1,4 +1,4 @@
-import type { WorkEntries, WorkEntriesIn, WorkEntriesOut } from '../models/work-entries.model';
+import type { WorkEntries, WorkEntriesPost } from '../models/work-entries.model';
 import sesameApiService from './axios-endpoint';
 
 
@@ -12,12 +12,12 @@ class WorkEntriesAxios {
             return workEntries;
     };
 
-    public postWorkEntriesClockIn = async (clockIn: WorkEntriesIn): Promise<WorkEntries> => {
+    public postWorkEntriesClockIn = async (clockIn: WorkEntriesPost): Promise<WorkEntries> => {
             const { data } = await sesameApiService.post("/clock-in", clockIn);
             return data.data;
     };
 
-    public postWorkEntriesClockOut = async (clockOut: WorkEntriesOut): Promise<WorkEntries> => {
+    public postWorkEntriesClockOut = async (clockOut: WorkEntriesPost): Promise<WorkEntries> => {
             const { data } = await sesameApiService.post("/clock-out", clockOut);
             return data.data;
     };

@@ -10,7 +10,7 @@ export interface WorkEntries {
     workedSeconds:   number;
     createdAt:       Date;
     updatedAt:       Date;
-    deletedAt:       null;
+    deletedAt:       Date;
 }
 
 export interface WorkEntry {
@@ -25,19 +25,16 @@ export interface Coordinates {
 
 }
 
-export interface WorkEntriesIn {
+export interface WorkEntriesPost {
     employeeId: string;
-    workEntryIn: {
+    workEntryIn?: {
+        coordinates: Coordinates;
+    }
+    workEntryOut?: {
         coordinates: Coordinates;
     }
 }
 
-export interface WorkEntriesOut {
-    employeeId: string;
-    workEntryOut: {
-        coordinates: Coordinates;
-    }
-}
 
 export enum WorkStatusEmployee {
     Online = "online",
