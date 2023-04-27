@@ -3,7 +3,7 @@ import ClientLayout from './layout/ClientLayout.vue';
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-300" >
+  <div class="min-h-screen bg-gray-100" >
     <div class="h-full">
       <ClientLayout />
     </div>

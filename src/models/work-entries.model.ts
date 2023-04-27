@@ -87,3 +87,9 @@ export interface WorkEntriesOut {
         coordinates: Coordinates;
     }
 }
+
+export enum WorkStatusEmployee {
+    Online = "online",
+    Offline = "offline",
+    Pause = "pause"
+}
