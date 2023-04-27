@@ -86,7 +86,6 @@ const getClockInstance = (type: string) => {
         formatWorkTime.value = workTimeHelper(employeeWorkTime.value);
       }
       if (employeeWorkStatus.value === 'online' || employeeWorkStatus.value === 'pause') {
-        console.log(employeeWorkTime.value);
         if(employeeWorkTime.value){
           workTime.value = employeeWorkTime.value;
         }
