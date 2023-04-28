@@ -9,7 +9,7 @@ const Trans = {
     },
     async switchLanguage(newLocale: string) {
       Trans.currentLocale = newLocale
-      document.querySelector("html").setAttribute("lang", newLocale)
+      document.querySelector("html")?.setAttribute("lang", newLocale)
     },
   }
   export default Trans
