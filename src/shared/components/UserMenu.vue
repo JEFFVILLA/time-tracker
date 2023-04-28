@@ -19,16 +19,16 @@ import { WorkStatusEmployee } from '../../models/work-entries.model';
 
   <div v-show="show" @mouseleave="isOpen" class="absolute right-10 top-16 py-2 mt-2 bg-white-200 border-1 text-black rounded-md shadow-xl  w-40">
     <router-link to="/" class="block px-4 py-2 text-sm  hover:bg-emerald-300 ">
-      Cuentas
+      {{ $t("menu.account") }}
     </router-link>
     <router-link to="/" class="block px-4 py-2 text-sm   hover:bg-emerald-300">
-      Vista empleado
+      {{ $t("menu.portal") }}
     </router-link>
     <router-link to="/" class="block px-4 py-2 text-sm  hover:bg-emerald-300">
-      Mi perfil
+      {{ $t("menu.profile")}}
     </router-link>
     <router-link to="/" class="block px-4 py-2 text-sm  hover:bg-emerald-300">
-      Cerrar sesión
+      {{ $t("menu.logout") }}
     </router-link>
   </div>
 </template>

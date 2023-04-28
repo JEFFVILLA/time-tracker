@@ -20,5 +20,13 @@
     "locale": {
         "es": "Español",
         "en": "Ingles"
+    },
+    "menu":{
+        "account": "Cuenta",
+        "portal": "Vista Empleado",
+        "logout": "Cerrar Sesión",
+        "profile": "Mi Perfil"
     }
+
+
 }
