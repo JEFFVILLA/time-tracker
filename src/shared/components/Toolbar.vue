@@ -3,15 +3,16 @@
     <div class="flex items-center sm:justify-between sm:gap-4">
       <div class="relative hidden sm:block">
         <span class="text-xl">DashBoard</span>
+        <Switcheri18nApp></Switcheri18nApp>
       </div>
 
       <div class="flex flex-1 items-center justify-between sm:justify-end">
         <div class="group gap-3 flex shrink-0 items-center rounded-full transition p-4 bg-emerald-200">
           <span>{{ formatWorkTime }}</span>
-          <ButtonApp v-if="employeeWorkStatus === 'offline'"  class="bg-emerald-500" @click="clockIn">Entrar</ButtonApp>
-          <ButtonApp v-if="employeeWorkStatus === 'pause' || employeeWorkStatus === 'online'" class="bg-gray-400">Pausar
+          <ButtonApp v-if="employeeWorkStatus === 'offline'"  class="bg-emerald-500" @click="clockIn">{{ $t("button.enter") }}</ButtonApp>
+          <ButtonApp v-if="employeeWorkStatus === 'pause' || employeeWorkStatus === 'online'" class="bg-gray-400">{{ $t("button.pause") }}
           </ButtonApp>
-          <ButtonApp v-if="employeeWorkStatus === 'online'" class="bg-red-400" @click="clockOut">Salir</ButtonApp>
+          <ButtonApp v-if="employeeWorkStatus === 'online'" class="bg-red-400" @click="clockOut"> {{ $t("button.exit") }} </ButtonApp>
           <span aria-hidden="true" class="block h-8 w-px rounded-full bg-gray-500"></span>
           <UserMenuApp :employee-full-name="employeeFullName" :work-status-employee="employeeWorkStatus" />
         </div>
@@ -20,8 +21,12 @@
   </div>
 </template>
 <script lang="ts">
+import Switcheri18nApp from "./Switcheri18n.vue"
   export default {
     name: 'ToolbarApp',
+    components: {
+      Switcheri18nApp
+    },
     
   }
 </script>

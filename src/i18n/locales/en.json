@@ -1,0 +1,24 @@
+{
+    "nav": {
+      "home": "Home",
+      "about": "About"
+    },
+    "card": {
+      "header": "Welcome I'm a component! {name}",
+      "created_by": "This is create by Jeffri Villacreses.",
+      "work": "Work done with the following tools: Vue 3, Vue Router, TaildWindCSS, Typescript, Pinia, i18n."
+    },
+    "about": {
+      "header": "Welcome I'am a component About us"
+    },
+    "button": {
+      "change": "Change language",
+      "enter": "Enter",
+      "exit": "Exit",
+      "pause": "Pause"
+    },
+    "locale": {
+      "en": "English",
+      "es": "Spanish"
+    }
+  }

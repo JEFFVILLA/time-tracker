@@ -12,6 +12,6 @@ export default defineComponent({
     name: 'HomeApp',
     components: {
       CardApp,
-    },
+    }
 });
 </script>
