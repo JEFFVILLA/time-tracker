@@ -20,5 +20,11 @@
     "locale": {
       "en": "English",
       "es": "Spanish"
+    },
+    "menu": {
+      "account": "Account",
+      "portal": "Employee Portal",
+      "logout": "Logout",
+      "profile": "Profile"
     }
   }
