@@ -16,9 +16,9 @@ export default {
         const { t, locale } = useI18n()
         const supportedLocales = Tr.supportedLocales
 
-        const switchLanguage = async (event: any) => { // <--- 1
-            const newLocale = event.target.value // <--- 2
-            await Tr.switchLanguage(newLocale) // <--- 3
+        const switchLanguage = async (event: any) => { 
+            const newLocale = event.target.value 
+            await Tr.switchLanguage(newLocale)
         }
         return { t, locale, supportedLocales, switchLanguage }
     },
