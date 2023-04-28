@@ -1,0 +1,24 @@
+{
+    "nav": {
+        "home": "Portal",
+        "about": "Acerca de"
+    },
+    "card": {
+        "header": "Bienvenidos soy un componente! {name}",
+        "created_by": "Creado por Jeffri Villacreses.",
+        "work": "Trabajo realizado con las siguiente herramientas: Vue 3, Vue Router, TaildWindCSS, Typescript, Pinia, i18n."
+    },
+    "about": {
+        "header": "Bienvenidos soy un componente! Acerca de"
+    },
+    "button": {
+        "change": "Cambiar idioma",
+        "enter": "Entrar",
+        "exit": "Salir",
+        "pause": "Pausar"
+    },
+    "locale": {
+        "es": "Español",
+        "en": "Ingles"
+    }
+}

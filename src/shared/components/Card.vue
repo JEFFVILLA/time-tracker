@@ -5,10 +5,10 @@
         <div class="sm:flex sm:justify-between sm:gap-4">
             <div>
                 <h3 class="text-lg font-bold text-gray-900 sm:text-xl">
-                    Hola soy un {{nameComponent}} component
+                    {{ $t("card.header", {name: nameComponent}) }}
                 </h3>
 
-                <p class="mt-1 text-xs font-medium text-gray-600">By Jeffri Villacreses</p>
+                <p class="mt-1 text-xs font-medium text-gray-600">{{ $t("card.created_by") }}</p>
             </div>
 
             <div class="hidden sm:block sm:shrink-0">
@@ -19,8 +19,7 @@
 
         <div class="mt-4">
             <p class="max-w-[40ch] text-sm text-gray-500">
-                Trabajo realizado con las siguiente herramientas y con el &#128153;:
-                Vue 3, Vue Router, TaildWindCSS, Typescript, Pinia. Coming soon....
+                {{ $t("card.work") }}
             </p>
         </div>
     </a>
@@ -29,6 +28,7 @@
 import { defineComponent } from 'vue';
 export default defineComponent({
     name: 'CardApp',
-    props: ['nameComponent']
+    props: ['nameComponent'],
+ 
 });
 </script>
